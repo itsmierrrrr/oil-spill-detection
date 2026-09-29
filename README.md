@@ -152,7 +152,7 @@ See [`scripts/modal_train.py`](scripts/modal_train.py) for collecting results.
 
 ## Developer
 
-Developed by **Mihir**.
+Developed by **Mihir Sawant**.
 
 ## License
 
