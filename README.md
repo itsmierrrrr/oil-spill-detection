@@ -1,7 +1,5 @@
 # Oil Spill Detection from Sentinel-1 SAR
 
-![CI](https://github.com/m7mdehab/oil-spill-detection/actions/workflows/ci.yml/badge.svg)
-
 Semantic segmentation of marine oil spills in Sentinel-1 C-band SAR imagery, with
 an end-to-end pipeline that turns a raw Copernicus scene into georeferenced oil
 polygons, served through a web API and an interactive map UI.
@@ -59,7 +57,7 @@ SegFormer mit-b2 is the selected model. Full per-class IoU / precision / recall 
 F1 for every run live in [`docs/results.md`](docs/results.md); the methodology and
 the rationale for the metric choices are in [`docs/metrics.md`](docs/metrics.md).
 
-## Case study: MV Wakashio (Mauritius, 2020)
+## Case Study: MV Wakashio (Mauritius, 2020)
 
 The detection pipeline was run end-to-end on a real, previously unseen Sentinel-1B
 scene over the August 2020 MV Wakashio spill off south-east Mauritius.
@@ -88,7 +86,7 @@ make check
 `make check` runs lint (ruff), the formatting check, type checking (pyright), and
 the fast test suite.
 
-### Reproduce the pipeline (CPU smoke run)
+### Reproduce the Pipeline (CPU Smoke Run)
 
 A fast, CPU-only sanity reproduction — extract the data, run a short training
 sanity pass, and evaluate the resulting checkpoint on a small slice of the test
@@ -103,7 +101,7 @@ make evaluate-smoke # evaluate the latest checkpoint on a test slice
 Smoke runs are sanity checks, not representative of model quality — the headline
 results above come from full GPU training runs.
 
-### Run the app
+### Run the App
 
 ```sh
 docker compose up
@@ -114,7 +112,7 @@ the same container. The app runs without a trained model (the `/predict` endpoin
 returns a clear 503 until one is available); point it at a published model by
 setting `OILSPILL_MODEL_HF_REPO` (see comments in [`compose.yaml`](compose.yaml)).
 
-### GPU training
+### GPU Training
 
 Full training runs on GPU hardware via [Modal](https://modal.com):
 
@@ -142,17 +140,6 @@ See [`scripts/modal_train.py`](scripts/modal_train.py) for collecting results.
   biases detected area downward; closing it requires true sigma-nought calibration
   and matching the dB-to-model window to the training histogram.
 
-## Original 2024 project
-
-This repository is a modernization of an earlier 2024 graduation project. That
-original work — including its results tables — is preserved on the
-[`legacy-archive`](../../tree/legacy-archive) branch and summarized in
-[`docs/legacy_content.md`](docs/legacy_content.md). The original metrics are
-referenced only as "original 2024 results" and read with the caveats in
-[`docs/metrics.md`](docs/metrics.md): they were largely background-dominated pixel
-accuracy reported under mixed averaging schemes, so they cannot be compared
-directly with the oil-class metrics reported here.
-
 ## Documentation
 
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — package layout, model registry,
@@ -162,6 +149,10 @@ directly with the oil-class metrics reported here.
 - [`docs/data_report.md`](docs/data_report.md) / [`data/README.md`](data/README.md)
   — dataset statistics and the class legend.
 - [`docs/case_study/README.md`](docs/case_study/README.md) — the Wakashio case study.
+
+## Developer
+
+Developed by **Mihir**.
 
 ## License
 
